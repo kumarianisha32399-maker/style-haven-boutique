@@ -16,6 +16,7 @@ import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as OrderConfirmationRouteImport } from './routes/order-confirmation'
 import { Route as ReadymadeRouteImport } from './routes/readymade'
 import { Route as RentalRouteImport } from './routes/rental'
+import { Route as RentalBookingRouteImport } from './routes/rental-booking'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as WishlistRouteImport } from './routes/wishlist'
 import { Route as ProductIdRouteImport } from './routes/product.$id'
@@ -55,6 +56,11 @@ const RentalRoute = RentalRouteImport.update({
   path: '/rental',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RentalBookingRoute = RentalBookingRouteImport.update({
+  id: '/rental-booking',
+  path: '/rental-booking',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
@@ -79,6 +85,7 @@ export interface FileRoutesByFullPath {
   '/order-confirmation': typeof OrderConfirmationRoute
   '/readymade': typeof ReadymadeRoute
   '/rental': typeof RentalRoute
+  '/rental-booking': typeof RentalBookingRoute
   '/shop': typeof ShopRoute
   '/wishlist': typeof WishlistRoute
   '/product/$id': typeof ProductIdRoute
@@ -91,6 +98,7 @@ export interface FileRoutesByTo {
   '/order-confirmation': typeof OrderConfirmationRoute
   '/readymade': typeof ReadymadeRoute
   '/rental': typeof RentalRoute
+  '/rental-booking': typeof RentalBookingRoute
   '/shop': typeof ShopRoute
   '/wishlist': typeof WishlistRoute
   '/product/$id': typeof ProductIdRoute
@@ -104,6 +112,7 @@ export interface FileRoutesById {
   '/order-confirmation': typeof OrderConfirmationRoute
   '/readymade': typeof ReadymadeRoute
   '/rental': typeof RentalRoute
+  '/rental-booking': typeof RentalBookingRoute
   '/shop': typeof ShopRoute
   '/wishlist': typeof WishlistRoute
   '/product/$id': typeof ProductIdRoute
@@ -118,6 +127,7 @@ export interface FileRouteTypes {
     | '/order-confirmation'
     | '/readymade'
     | '/rental'
+    | '/rental-booking'
     | '/shop'
     | '/wishlist'
     | '/product/$id'
@@ -130,6 +140,7 @@ export interface FileRouteTypes {
     | '/order-confirmation'
     | '/readymade'
     | '/rental'
+    | '/rental-booking'
     | '/shop'
     | '/wishlist'
     | '/product/$id'
@@ -142,6 +153,7 @@ export interface FileRouteTypes {
     | '/order-confirmation'
     | '/readymade'
     | '/rental'
+    | '/rental-booking'
     | '/shop'
     | '/wishlist'
     | '/product/$id'
@@ -155,6 +167,7 @@ export interface RootRouteChildren {
   OrderConfirmationRoute: typeof OrderConfirmationRoute
   ReadymadeRoute: typeof ReadymadeRoute
   RentalRoute: typeof RentalRoute
+  RentalBookingRoute: typeof RentalBookingRoute
   ShopRoute: typeof ShopRoute
   WishlistRoute: typeof WishlistRoute
   ProductIdRoute: typeof ProductIdRoute
@@ -211,6 +224,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RentalRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/rental-booking': {
+      id: '/rental-booking'
+      path: '/rental-booking'
+      fullPath: '/rental-booking'
+      preLoaderRoute: typeof RentalBookingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shop': {
       id: '/shop'
       path: '/shop'
@@ -243,6 +263,7 @@ const rootRouteChildren: RootRouteChildren = {
   OrderConfirmationRoute: OrderConfirmationRoute,
   ReadymadeRoute: ReadymadeRoute,
   RentalRoute: RentalRoute,
+  RentalBookingRoute: RentalBookingRoute,
   ShopRoute: ShopRoute,
   WishlistRoute: WishlistRoute,
   ProductIdRoute: ProductIdRoute,
