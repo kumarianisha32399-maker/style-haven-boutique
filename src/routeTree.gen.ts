@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as CategoriesRouteImport } from './routes/categories'
+import { Route as CheckoutRouteImport } from './routes/checkout'
+import { Route as OrderConfirmationRouteImport } from './routes/order-confirmation'
 import { Route as ReadymadeRouteImport } from './routes/readymade'
 import { Route as RentalRouteImport } from './routes/rental'
 import { Route as ShopRouteImport } from './routes/shop'
@@ -31,6 +33,16 @@ const CartRoute = CartRouteImport.update({
 const CategoriesRoute = CategoriesRouteImport.update({
   id: '/categories',
   path: '/categories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrderConfirmationRoute = OrderConfirmationRouteImport.update({
+  id: '/order-confirmation',
+  path: '/order-confirmation',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ReadymadeRoute = ReadymadeRouteImport.update({
@@ -63,6 +75,8 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cart': typeof CartRoute
   '/categories': typeof CategoriesRoute
+  '/checkout': typeof CheckoutRoute
+  '/order-confirmation': typeof OrderConfirmationRoute
   '/readymade': typeof ReadymadeRoute
   '/rental': typeof RentalRoute
   '/shop': typeof ShopRoute
@@ -73,6 +87,8 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cart': typeof CartRoute
   '/categories': typeof CategoriesRoute
+  '/checkout': typeof CheckoutRoute
+  '/order-confirmation': typeof OrderConfirmationRoute
   '/readymade': typeof ReadymadeRoute
   '/rental': typeof RentalRoute
   '/shop': typeof ShopRoute
@@ -84,6 +100,8 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/cart': typeof CartRoute
   '/categories': typeof CategoriesRoute
+  '/checkout': typeof CheckoutRoute
+  '/order-confirmation': typeof OrderConfirmationRoute
   '/readymade': typeof ReadymadeRoute
   '/rental': typeof RentalRoute
   '/shop': typeof ShopRoute
@@ -96,6 +114,8 @@ export interface FileRouteTypes {
     | '/'
     | '/cart'
     | '/categories'
+    | '/checkout'
+    | '/order-confirmation'
     | '/readymade'
     | '/rental'
     | '/shop'
@@ -106,6 +126,8 @@ export interface FileRouteTypes {
     | '/'
     | '/cart'
     | '/categories'
+    | '/checkout'
+    | '/order-confirmation'
     | '/readymade'
     | '/rental'
     | '/shop'
@@ -116,6 +138,8 @@ export interface FileRouteTypes {
     | '/'
     | '/cart'
     | '/categories'
+    | '/checkout'
+    | '/order-confirmation'
     | '/readymade'
     | '/rental'
     | '/shop'
@@ -127,6 +151,8 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CartRoute: typeof CartRoute
   CategoriesRoute: typeof CategoriesRoute
+  CheckoutRoute: typeof CheckoutRoute
+  OrderConfirmationRoute: typeof OrderConfirmationRoute
   ReadymadeRoute: typeof ReadymadeRoute
   RentalRoute: typeof RentalRoute
   ShopRoute: typeof ShopRoute
@@ -155,6 +181,20 @@ declare module '@tanstack/react-router' {
       path: '/categories'
       fullPath: '/categories'
       preLoaderRoute: typeof CategoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/order-confirmation': {
+      id: '/order-confirmation'
+      path: '/order-confirmation'
+      fullPath: '/order-confirmation'
+      preLoaderRoute: typeof OrderConfirmationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/readymade': {
@@ -199,6 +239,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CartRoute: CartRoute,
   CategoriesRoute: CategoriesRoute,
+  CheckoutRoute: CheckoutRoute,
+  OrderConfirmationRoute: OrderConfirmationRoute,
   ReadymadeRoute: ReadymadeRoute,
   RentalRoute: RentalRoute,
   ShopRoute: ShopRoute,
