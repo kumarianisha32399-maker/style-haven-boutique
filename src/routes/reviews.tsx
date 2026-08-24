@@ -32,7 +32,7 @@ function Reviews() {
         subtitle={
           live.length
             ? `${avg.toFixed(1)} average rating from ${live.length} verified boutique customers.`
-            : undefined
+            : "Approved customer reviews appear here."
         }
       />
       <div className="container-lux py-14">
