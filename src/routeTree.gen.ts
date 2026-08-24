@@ -14,6 +14,7 @@ import { Route as CategoriesRouteImport } from './routes/categories'
 import { Route as ReadymadeRouteImport } from './routes/readymade'
 import { Route as RentalRouteImport } from './routes/rental'
 import { Route as ShopRouteImport } from './routes/shop'
+import { Route as WishlistRouteImport } from './routes/wishlist'
 import { Route as ProductIdRouteImport } from './routes/product.$id'
 
 const IndexRoute = IndexRouteImport.update({
@@ -41,6 +42,11 @@ const ShopRoute = ShopRouteImport.update({
   path: '/shop',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WishlistRoute = WishlistRouteImport.update({
+  id: '/wishlist',
+  path: '/wishlist',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductIdRoute = ProductIdRouteImport.update({
   id: '/product/$id',
   path: '/product/$id',
@@ -53,6 +59,7 @@ export interface FileRoutesByFullPath {
   '/readymade': typeof ReadymadeRoute
   '/rental': typeof RentalRoute
   '/shop': typeof ShopRoute
+  '/wishlist': typeof WishlistRoute
   '/product/$id': typeof ProductIdRoute
 }
 export interface FileRoutesByTo {
@@ -61,6 +68,7 @@ export interface FileRoutesByTo {
   '/readymade': typeof ReadymadeRoute
   '/rental': typeof RentalRoute
   '/shop': typeof ShopRoute
+  '/wishlist': typeof WishlistRoute
   '/product/$id': typeof ProductIdRoute
 }
 export interface FileRoutesById {
@@ -70,14 +78,28 @@ export interface FileRoutesById {
   '/readymade': typeof ReadymadeRoute
   '/rental': typeof RentalRoute
   '/shop': typeof ShopRoute
+  '/wishlist': typeof WishlistRoute
   '/product/$id': typeof ProductIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/categories' | '/readymade' | '/rental' | '/shop' | '/product/$id'
+    | '/'
+    | '/categories'
+    | '/readymade'
+    | '/rental'
+    | '/shop'
+    | '/wishlist'
+    | '/product/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/categories' | '/readymade' | '/rental' | '/shop' | '/product/$id'
+  to:
+    | '/'
+    | '/categories'
+    | '/readymade'
+    | '/rental'
+    | '/shop'
+    | '/wishlist'
+    | '/product/$id'
   id:
     | '__root__'
     | '/'
@@ -85,6 +107,7 @@ export interface FileRouteTypes {
     | '/readymade'
     | '/rental'
     | '/shop'
+    | '/wishlist'
     | '/product/$id'
   fileRoutesById: FileRoutesById
 }
@@ -94,6 +117,7 @@ export interface RootRouteChildren {
   ReadymadeRoute: typeof ReadymadeRoute
   RentalRoute: typeof RentalRoute
   ShopRoute: typeof ShopRoute
+  WishlistRoute: typeof WishlistRoute
   ProductIdRoute: typeof ProductIdRoute
 }
 
@@ -134,6 +158,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShopRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/wishlist': {
+      id: '/wishlist'
+      path: '/wishlist'
+      fullPath: '/wishlist'
+      preLoaderRoute: typeof WishlistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/product/$id': {
       id: '/product/$id'
       path: '/product/$id'
@@ -150,6 +181,7 @@ const rootRouteChildren: RootRouteChildren = {
   ReadymadeRoute: ReadymadeRoute,
   RentalRoute: RentalRoute,
   ShopRoute: ShopRoute,
+  WishlistRoute: WishlistRoute,
   ProductIdRoute: ProductIdRoute,
 }
 export const routeTree = rootRouteImport
