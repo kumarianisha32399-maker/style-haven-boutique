@@ -27,12 +27,15 @@ import { Route as ShopRouteImport } from './routes/shop'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as WishlistRouteImport } from './routes/wishlist'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminBannersRouteImport } from './routes/admin.banners'
 import { Route as AdminCategoriesRouteImport } from './routes/admin.categories'
 import { Route as AdminCustomersRouteImport } from './routes/admin.customers'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as AdminOffersRouteImport } from './routes/admin.offers'
 import { Route as AdminOrdersRouteImport } from './routes/admin.orders'
 import { Route as AdminProductsRouteImport } from './routes/admin.products'
 import { Route as AdminRentalsRouteImport } from './routes/admin.rentals'
+import { Route as AdminReviewsRouteImport } from './routes/admin.reviews'
 import { Route as ProductIdRouteImport } from './routes/product.$id'
 
 const IndexRoute = IndexRouteImport.update({
@@ -125,6 +128,11 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/admin/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminBannersRoute = AdminBannersRouteImport.update({
+  id: '/admin/banners',
+  path: '/admin/banners',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminCategoriesRoute = AdminCategoriesRouteImport.update({
   id: '/admin/categories',
   path: '/admin/categories',
@@ -140,6 +148,11 @@ const AdminLoginRoute = AdminLoginRouteImport.update({
   path: '/admin/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminOffersRoute = AdminOffersRouteImport.update({
+  id: '/admin/offers',
+  path: '/admin/offers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminOrdersRoute = AdminOrdersRouteImport.update({
   id: '/admin/orders',
   path: '/admin/orders',
@@ -153,6 +166,11 @@ const AdminProductsRoute = AdminProductsRouteImport.update({
 const AdminRentalsRoute = AdminRentalsRouteImport.update({
   id: '/admin/rentals',
   path: '/admin/rentals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminReviewsRoute = AdminReviewsRouteImport.update({
+  id: '/admin/reviews',
+  path: '/admin/reviews',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProductIdRoute = ProductIdRouteImport.update({
@@ -179,12 +197,15 @@ export interface FileRoutesByFullPath {
   '/shop': typeof ShopRoute
   '/terms': typeof TermsRoute
   '/wishlist': typeof WishlistRoute
+  '/admin/banners': typeof AdminBannersRoute
   '/admin/categories': typeof AdminCategoriesRoute
   '/admin/customers': typeof AdminCustomersRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/offers': typeof AdminOffersRoute
   '/admin/orders': typeof AdminOrdersRoute
   '/admin/products': typeof AdminProductsRoute
   '/admin/rentals': typeof AdminRentalsRoute
+  '/admin/reviews': typeof AdminReviewsRoute
   '/product/$id': typeof ProductIdRoute
   '/admin/': typeof AdminIndexRoute
 }
@@ -206,12 +227,15 @@ export interface FileRoutesByTo {
   '/shop': typeof ShopRoute
   '/terms': typeof TermsRoute
   '/wishlist': typeof WishlistRoute
+  '/admin/banners': typeof AdminBannersRoute
   '/admin/categories': typeof AdminCategoriesRoute
   '/admin/customers': typeof AdminCustomersRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/offers': typeof AdminOffersRoute
   '/admin/orders': typeof AdminOrdersRoute
   '/admin/products': typeof AdminProductsRoute
   '/admin/rentals': typeof AdminRentalsRoute
+  '/admin/reviews': typeof AdminReviewsRoute
   '/product/$id': typeof ProductIdRoute
   '/admin': typeof AdminIndexRoute
 }
@@ -234,12 +258,15 @@ export interface FileRoutesById {
   '/shop': typeof ShopRoute
   '/terms': typeof TermsRoute
   '/wishlist': typeof WishlistRoute
+  '/admin/banners': typeof AdminBannersRoute
   '/admin/categories': typeof AdminCategoriesRoute
   '/admin/customers': typeof AdminCustomersRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/offers': typeof AdminOffersRoute
   '/admin/orders': typeof AdminOrdersRoute
   '/admin/products': typeof AdminProductsRoute
   '/admin/rentals': typeof AdminRentalsRoute
+  '/admin/reviews': typeof AdminReviewsRoute
   '/product/$id': typeof ProductIdRoute
   '/admin/': typeof AdminIndexRoute
 }
@@ -263,12 +290,15 @@ export interface FileRouteTypes {
     | '/shop'
     | '/terms'
     | '/wishlist'
+    | '/admin/banners'
     | '/admin/categories'
     | '/admin/customers'
     | '/admin/login'
+    | '/admin/offers'
     | '/admin/orders'
     | '/admin/products'
     | '/admin/rentals'
+    | '/admin/reviews'
     | '/product/$id'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
@@ -290,12 +320,15 @@ export interface FileRouteTypes {
     | '/shop'
     | '/terms'
     | '/wishlist'
+    | '/admin/banners'
     | '/admin/categories'
     | '/admin/customers'
     | '/admin/login'
+    | '/admin/offers'
     | '/admin/orders'
     | '/admin/products'
     | '/admin/rentals'
+    | '/admin/reviews'
     | '/product/$id'
     | '/admin'
   id:
@@ -317,12 +350,15 @@ export interface FileRouteTypes {
     | '/shop'
     | '/terms'
     | '/wishlist'
+    | '/admin/banners'
     | '/admin/categories'
     | '/admin/customers'
     | '/admin/login'
+    | '/admin/offers'
     | '/admin/orders'
     | '/admin/products'
     | '/admin/rentals'
+    | '/admin/reviews'
     | '/product/$id'
     | '/admin/'
   fileRoutesById: FileRoutesById
@@ -345,12 +381,15 @@ export interface RootRouteChildren {
   ShopRoute: typeof ShopRoute
   TermsRoute: typeof TermsRoute
   WishlistRoute: typeof WishlistRoute
+  AdminBannersRoute: typeof AdminBannersRoute
   AdminCategoriesRoute: typeof AdminCategoriesRoute
   AdminCustomersRoute: typeof AdminCustomersRoute
   AdminLoginRoute: typeof AdminLoginRoute
+  AdminOffersRoute: typeof AdminOffersRoute
   AdminOrdersRoute: typeof AdminOrdersRoute
   AdminProductsRoute: typeof AdminProductsRoute
   AdminRentalsRoute: typeof AdminRentalsRoute
+  AdminReviewsRoute: typeof AdminReviewsRoute
   ProductIdRoute: typeof ProductIdRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
@@ -483,6 +522,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/banners': {
+      id: '/admin/banners'
+      path: '/admin/banners'
+      fullPath: '/admin/banners'
+      preLoaderRoute: typeof AdminBannersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/categories': {
       id: '/admin/categories'
       path: '/admin/categories'
@@ -504,6 +550,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/offers': {
+      id: '/admin/offers'
+      path: '/admin/offers'
+      fullPath: '/admin/offers'
+      preLoaderRoute: typeof AdminOffersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/orders': {
       id: '/admin/orders'
       path: '/admin/orders'
@@ -523,6 +576,13 @@ declare module '@tanstack/react-router' {
       path: '/admin/rentals'
       fullPath: '/admin/rentals'
       preLoaderRoute: typeof AdminRentalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/reviews': {
+      id: '/admin/reviews'
+      path: '/admin/reviews'
+      fullPath: '/admin/reviews'
+      preLoaderRoute: typeof AdminReviewsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/product/$id': {
@@ -553,12 +613,15 @@ const rootRouteChildren: RootRouteChildren = {
   ShopRoute: ShopRoute,
   TermsRoute: TermsRoute,
   WishlistRoute: WishlistRoute,
+  AdminBannersRoute: AdminBannersRoute,
   AdminCategoriesRoute: AdminCategoriesRoute,
   AdminCustomersRoute: AdminCustomersRoute,
   AdminLoginRoute: AdminLoginRoute,
+  AdminOffersRoute: AdminOffersRoute,
   AdminOrdersRoute: AdminOrdersRoute,
   AdminProductsRoute: AdminProductsRoute,
   AdminRentalsRoute: AdminRentalsRoute,
+  AdminReviewsRoute: AdminReviewsRoute,
   ProductIdRoute: ProductIdRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
